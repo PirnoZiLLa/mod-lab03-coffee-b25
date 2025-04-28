@@ -1,17 +1,17 @@
-#include "Automata.h"
+##include "Automata.h"
 #include <thread>
 #include <chrono>
 
 using namespace std;
 
 Automata::Automata() : cash(0), state(STATES::OFF) {
-    menu = { "Êîôå", "×àé", "Ìîëîêî", "Ñîê" };
+    menu = { "ÐšÐ¾Ñ„Ðµ", "Ð§Ð°Ð¹", "ÐœÐ¾Ð»Ð¾ÐºÐ¾", "Ð¡Ð¾Ðº" };
     prices = { 50, 40, 60, 70 };
 }
 
 void Automata::returnChange() {
     if (cash > 0) {
-        cout << "  Âîçâðàùåíî ñäà÷è: " << cash << " åäèíèö\n";
+        cout << "  Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÐ½Ð¾ ÑÐ´Ð°Ñ‡Ð¸: " << cash << " ÐµÐ´Ð¸Ð½Ð¸Ñ†\n";
         cash = 0;
     }
 }
@@ -19,10 +19,10 @@ void Automata::returnChange() {
 void Automata::on() {
     if (state == STATES::OFF) {
         state = STATES::WAIT;
-        cout << "  Àâòîìàò âêëþ÷¸í. Îæèäàíèå êëèåíòà...\n";
+        cout << "  ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚ Ð²ÐºÐ»ÑŽÑ‡Ñ‘Ð½. ÐžÐ¶Ð¸Ð´Ð°Ð½Ð¸Ðµ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°...\n";
     }
     else {
-        cout << "ÎØÈÁÊÀ: Àâòîìàò óæå âêëþ÷¸í.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚ ÑƒÐ¶Ðµ Ð²ÐºÐ»ÑŽÑ‡Ñ‘Ð½.\n";
     }
 }
 
@@ -30,10 +30,10 @@ void Automata::off() {
     if (state == STATES::WAIT) {
         returnChange();
         state = STATES::OFF;
-        cout << "  Àâòîìàò âûêëþ÷åí.\n";
+        cout << "  ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚ Ð²Ñ‹ÐºÐ»ÑŽÑ‡ÐµÐ½.\n";
     }
     else {
-        cout << "ÎØÈÁÊÀ: Âûêëþ÷åíèå âîçìîæíî òîëüêî èç ñîñòîÿíèÿ îæèäàíèÿ.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: Ð’Ñ‹ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¸Ð· ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ñ Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ñ.\n";
     }
 }
 
@@ -41,17 +41,17 @@ void Automata::coin(int amount) {
     if (state == STATES::WAIT || state == STATES::ACCEPT) {
         cash += amount;
         state = STATES::ACCEPT;
-        cout << "  Âíåñåíî " << amount << " åäèíèö. Òåêóùèé áàëàíñ: " << cash << "\n";
+        cout << "  Ð’Ð½ÐµÑÐµÐ½Ð¾ " << amount << " ÐµÐ´Ð¸Ð½Ð¸Ñ†. Ð¢ÐµÐºÑƒÑ‰Ð¸Ð¹ Ð±Ð°Ð»Ð°Ð½Ñ: " << cash << "\n";
     }
     else {
-        cout << "ÎØÈÁÊÀ: Íåâîçìîæíî âíåñòè äåíüãè â òåêóùåì ñîñòîÿíèè.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð²Ð½ÐµÑÑ‚Ð¸ Ð´ÐµÐ½ÑŒÐ³Ð¸ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸.\n";
     }
 }
 
 void Automata::getMenu() {
-    cout << "ÌÅÍÞ ÍÀÏÈÒÊÎÂ:\n";
+    cout << "ÐœÐ•ÐÐ® ÐÐÐŸÐ˜Ð¢ÐšÐžÐ’:\n";
     for (size_t i = 0; i < menu.size(); ++i) {
-        cout << (i + 1) << ". " << menu[i] << " — " << prices[i] << " åäèíèö\n";
+        cout << (i + 1) << ". " << menu[i] << " â€” " << prices[i] << " ÐµÐ´Ð¸Ð½Ð¸Ñ†\n";
     }
 }
 
@@ -62,7 +62,7 @@ STATES Automata::getState() {
 void Automata::choice(int drinkNumber) {
     if (state == STATES::ACCEPT) {
         if (drinkNumber <= 0 || static_cast<size_t>(drinkNumber) > menu.size()) {
-            cout << "ÎØÈÁÊÀ: Íåâåðíûé âûáîð íàïèòêà.\n";
+            cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ñ‹Ð±Ð¾Ñ€ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ°.\n";
             cancel();
         }
         else {
@@ -71,7 +71,7 @@ void Automata::choice(int drinkNumber) {
         }
     }
     else {
-        cout << "ÎØÈÁÊÀ: Íåëüçÿ âûáðàòü íàïèòîê ñåé÷àñ.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ»ÑŒÐ·Ñ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð½Ð°Ð¿Ð¸Ñ‚Ð¾Ðº ÑÐµÐ¹Ñ‡Ð°Ñ.\n";
     }
 }
 
@@ -82,45 +82,45 @@ void Automata::check(int drinkIndex) {
             cook(menu[drinkIndex]);
         }
         else {
-            cout << "ÎØÈÁÊÀ: Íåäîñòàòî÷íî ñðåäñòâ. Òðåáóåòñÿ: " << prices[drinkIndex] << ", äîñòóïíî: " << cash << "\n";
+            cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ ÑÑ€ÐµÐ´ÑÑ‚Ð². Ð¢Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ: " << prices[drinkIndex] << ", Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾: " << cash << "\n";
             cancel();
         }
     }
     else {
-        cout << "ÎØÈÁÊÀ: Íåâåðíîå ñîñòîÿíèå äëÿ ïðîâåðêè.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ²ÐµÑ€Ð½Ð¾Ðµ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ðµ Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸.\n";
     }
 }
 
 void Automata::cancel() {
     if (state == STATES::ACCEPT || state == STATES::CHECK) {
-        cout << "  Îïåðàöèÿ îòìåíåíà. Âîçâðàò â ñîñòîÿíèå îæèäàíèÿ.\n";
+        cout << "  ÐžÐ¿ÐµÑ€Ð°Ñ†Ð¸Ñ Ð¾Ñ‚Ð¼ÐµÐ½ÐµÐ½Ð°. Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‚ Ð² ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ðµ Ð¾Ð¶Ð¸Ð´Ð°Ð½Ð¸Ñ.\n";
         returnChange();
         state = STATES::WAIT;
     }
     else {
-        cout << "ÎØÈÁÊÀ: Íåëüçÿ îòìåíèòü îïåðàöèþ â òåêóùåì ñîñòîÿíèè.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ»ÑŒÐ·Ñ Ð¾Ñ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸ÑŽ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸.\n";
     }
 }
 
 void Automata::cook(string drinkName) {
     if (state == STATES::CHECK || state == STATES::COOK) {
         state = STATES::COOK;
-        cout << "  Ïðèãîòîâëåíèå íàïèòêà: " << drinkName << "...\n";
+        cout << "  ÐŸÑ€Ð¸Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð°Ð¿Ð¸Ñ‚ÐºÐ°: " << drinkName << "...\n";
         this_thread::sleep_for(chrono::seconds(5));
-        cout << "  Íàïèòîê " << drinkName << " ãîòîâ!\n";
+        cout << "  ÐÐ°Ð¿Ð¸Ñ‚Ð¾Ðº " << drinkName << " Ð³Ð¾Ñ‚Ð¾Ð²!\n";
         finish();
     }
     else {
-        cout << "ÎØÈÁÊÀ: Íåâîçìîæíî íà÷àòü ïðèãîòîâëåíèå â òåêóùåì ñîñòîÿíèè.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¸Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸.\n";
     }
 }
 
 void Automata::finish() {
     if (state == STATES::COOK) {
-        cout << "  Îáñëóæèâàíèå çàâåðøåíî. Îæèäàíèå ñëåäóþùåãî êëèåíòà.\n";
+        cout << "  ÐžÐ±ÑÐ»ÑƒÐ¶Ð¸Ð²Ð°Ð½Ð¸Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð¾. ÐžÐ¶Ð¸Ð´Ð°Ð½Ð¸Ðµ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°.\n";
         state = STATES::WAIT;
     }
     else {
-        cout << "ÎØÈÁÊÀ: Íåëüçÿ çàâåðøèòü ïðèãîòîâëåíèå, åñëè îíî íå íà÷àòî.\n";
+        cout << "ÐžÐ¨Ð˜Ð‘ÐšÐ: ÐÐµÐ»ÑŒÐ·Ñ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ð¿Ñ€Ð¸Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ, ÐµÑÐ»Ð¸ Ð¾Ð½Ð¾ Ð½Ðµ Ð½Ð°Ñ‡Ð°Ñ‚Ð¾.\n";
     }
 }
