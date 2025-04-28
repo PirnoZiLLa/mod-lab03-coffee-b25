@@ -65,7 +65,8 @@ STATES Automata::getState() {
 
 void Automata::choice(int drinkNumber) {
     if (state == STATES::ACCEPT) {
-        if (drinkNumber <= 0 || static_cast<size_t>(drinkNumber) > menu.size()) {
+        if (drinkNumber <= 0 
+            || static_cast<size_t>(drinkNumber) > menu.size()) {
             std::cout << "ОШИБКА: Неверный выбор напитка.\n";
             cancel();
         } else {
