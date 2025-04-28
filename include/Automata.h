@@ -34,6 +34,8 @@ class Automata {
     std::vector<std::string> menu;
     std::vector<int> prices;
 
+#endif // INCLUDE_AUTOMATA_H_
+
     void check(int drinkIndex);
     void cook(std::string drinkName);
     void finish();
