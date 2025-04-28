@@ -19,7 +19,7 @@ TEST(AutomataTest, TurnOn) {
 TEST(AutomataTest, TurnOnWhenAlreadyOn) {
     Automata machine;
     machine.on();
-    machine.on(); 
+    machine.on();
     EXPECT_EQ(machine.getState(), STATES::WAIT);
 }
 
@@ -58,7 +58,7 @@ TEST(AutomataTest, InsertCoinInAccept) {
 TEST(AutomataTest, ChooseWithoutMoney) {
     Automata machine;
     machine.on();
-    machine.choice(1); 
+    machine.choice(1);
     EXPECT_EQ(machine.getState(), STATES::WAIT);
 }
 
