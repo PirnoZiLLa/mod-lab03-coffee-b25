@@ -1,4 +1,5 @@
-##include "Automata.h"
+// Copyright 2022 UNN-IASR
+#include "Automata.h"
 #include <thread>
 #include <chrono>
 
