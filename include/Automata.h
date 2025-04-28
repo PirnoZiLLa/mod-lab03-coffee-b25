@@ -1,9 +1,8 @@
 // Copyright 2022 UNN-IASR
+
 #include <string>
 #include <vector>
 #include <iostream>
-
-using namespace std;
 
 enum class STATES {
     OFF,
@@ -14,7 +13,7 @@ enum class STATES {
 };
 
 class Automata {
-public:
+ public:
     Automata();
 
     void on();
@@ -25,16 +24,14 @@ public:
     void choice(int drinkNumber);
     void cancel();
     void returnChange();
-private:
+
+ private:
     int cash;
     STATES state;
-    vector<string> menu;
-    vector<int> prices;
+    std::vector<std::string> menu;
+    std::vector<int> prices;
 
     void check(int drinkIndex);
-    void cook(string drinkName);
+    void cook(std::string drinkName);
     void finish();
 };
-
-
-
