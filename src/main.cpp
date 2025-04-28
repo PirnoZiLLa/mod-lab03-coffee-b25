@@ -1,20 +1,22 @@
 // Copyright 2022 UNN-IASR
-#include <iostream>
+
 #include "Automata.h"
 
-using namespace std;
+#include <iostream>
+#include <locale>
 
 int main() {
-    setlocale(LC_ALL, "");
+    std::setlocale(LC_ALL, "");
+
     Automata machine;
 
     machine.on();
     machine.getMenu();
-    machine.coin(30); 
-    machine.choice(1); 
-    machine.coin(60); 
-    machine.choice(1); 
-    machine.off(); 
+    machine.coin(30);
+    machine.choice(1);
+    machine.coin(60);
+    machine.choice(1);
+    machine.off();
 
     return 0;
 }
